@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>Demo cells-codelabs-login</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="lazy-import" href="../../coronita-icons/coronita-icons.html">
+    <link rel="import" href="../../cells-demo-helper/cells-demo-helper.html">
+    <link rel="lazy-import" href="../cells-codelabs-login.html">
+    <link rel="lazy-import" href="css/demo-styles.html">
+  </head>
+  <body unresolved ontouchstart>
+    <cells-demo-helper available-themes='["cells-coronita-base-theme"]'>
+      <cells-demo-case heading="Basic">
+        <template>
+          <dom-bind>
+            <template>
+              <cells-codelabs-login
+              on-request-access="getFakeResponse"
+              logged-in="[[loggedIn]]"
+              logged-in-text="[[loggedInText]]">
+            </cells-codelabs-login>
+          </template>
+        </dom-bind>
+        <script>
+          const demo = document.querySelector('dom-bind');
+          demo.loggedIn = false;
+          demo.getFakeResponse = () => {
+            setTimeout(() => {
+              // This text could come in the payload of the login request
+              demo.loggedInText = 'Congratulations! You\'ve finished this codelab!';
+              demo.loggedIn = true;
+            }, 2000);
+          };
+        </script>
+      </template>
+    </cells-demo-case>
+
+      <cells-demo-case heading="With user">
+        <template>
+          <cells-codelabs-login user-id="XXX" user-name="John Doe" user-password="123456"></cells-codelabs-login>
+        </template>
+      </cells-demo-case>
+    </cells-demo-helper>
+  </body>
+</html>

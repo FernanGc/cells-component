@@ -1,0 +1,19 @@
+@import "bower_components/cells-sass/main";
+
+:host {
+  display: block;
+  box-sizing: border-box;
+  padding: rem(20px);
+  --cells-molecule-spinner-message-color: #000;
+
+  @apply --cells-codelabs-login;  
+}
+
+:host([hidden]), [hidden] {
+  display: none !important;
+}
+
+*, *:before, *:after {
+  font: inherit;
+  box-sizing: inherit;
+}
